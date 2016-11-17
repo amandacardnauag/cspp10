@@ -17,11 +17,11 @@ def get_p1_move():
 def get_comp_move():
     randy = random.randint(1,3)
     if randy == 1:
-        return ("rock")
+        return ("r")
     elif randy == 2:
-        return ("paper")
+        return ("p")
     elif randy == 3:
-        return ("scissors")
+        return ("s")
     return randy
     
 
@@ -30,7 +30,7 @@ def get_comp_move():
 #   purpose: allows the user to choose a number of rounds from 1 to 9.
 #   returns: the user-chosen number of rounds
 def get_rounds():
-    rounds = input(int("How many rounds?"))
+    rounds = int(input("How many rounds?"))
     return rounds
 
 #function name: get_round_winner
@@ -42,22 +42,29 @@ def get_rounds():
 #               "comp" if computer won
 #               "tie" if it's a tie
 def get_round_winner(p1move, cmove):
+    print(p1move + " " + cmove)
     if p1move == cmove:
         return("Tie!")
-    elif p1move == 'scissors' and cmove == 'paper':
+    elif p1move == 's' and cmove == 'p':
         return("You win!")
-    elif p1move == 'paper' and cmove == 'rock':
+    elif p1move == 'p' and cmove == 'r':
         return("You win!")
-    elif p1move == 'rock' and cmove == 'scissors':
+    elif p1move == 'r' and cmove == 's':
         return("You win!")
-    elif p1move == 'rock' and cmove == 'paper':
+    elif p1move == 'r' and cmove == 'p':
         return("You lose!")
-    elif p1move == "paper" and cmove == 'scissors':
+    elif p1move == 'p' and cmove == 's':
         return("You lose!")
-    elif p1move == 'scissors' and cmove == 'rock':
+    elif p1move == 's' and cmove == 'r':
         return("You lose")
+    elif p1move == 'p' and cmove == 'p':
+        return("Tie")
+    elif p1move == 's' and cmove == 's':
+        return("Tie")
+    elif p1move == 'r' and cmove == 'r':
+        return("Tie")   
     else:
-        print("Error")
+        return("Error")
     
     return 1
 #function name: get_full_move
@@ -75,7 +82,9 @@ def get_full_move(shortmove):
 #   purpose: prints the scoreboard
 #   returns: none
 def print_score(pscore, cscore, ties):
-    print(get_rounds())
+    pscore = 0
+    cscore = 0
+    ties = 0
 
 #function name: rps
 #   arguments: none
@@ -92,8 +101,10 @@ def rps():
 #   returns: none
 def test():
     return 1
-print(get_rounds())
-print(get_p1_move()) 
-print(get_comp_move())
-print(get_round_winner())
+getrounds = (get_rounds())
+p1move = (get_p1_move()) 
+cmove = (get_comp_move())
+winner = (get_round_winner(p1move, cmove))
+print(winner)
+
 rps()
