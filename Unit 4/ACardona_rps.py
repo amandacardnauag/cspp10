@@ -92,7 +92,20 @@ def print_score(pscore, cscore, ties):
 #               all the other functions to create RPS
 #   returns: none
 def rps():
-    return 1
+    rounds = get_rounds()
+    for rounds in range(int(rounds)):
+        move = get_p1_move()
+        randy = get_comp_move()
+        get_round_winner(p1move, randy)
+        winner = get_round_winner(p1move,comp_move)
+        print("player chose{}".format(p1_move))
+        print("Computer chose{}".format(get_full_move()))
+        if winner == "player":
+            print("Player won!")
+        elif winner == "comp":
+            print("Computer won!")
+        else:
+            print("It's a tie!")
 
 #function name: tests
 #   arguments: none
