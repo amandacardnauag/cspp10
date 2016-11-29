@@ -44,8 +44,8 @@ def get_rounds():
 def get_round_winner(p1move, cmove):
     print(p1move + " " + cmove)
     if p1move == cmove:
-        return("Tie!")
-    elif p1move == 's' and cmove == 'p':
+        return("It's a tie!")
+    if p1move == 's' and cmove == 'p':
         return("You win!")
     elif p1move == 'p' and cmove == 'r':
         return("You win!")
@@ -57,16 +57,11 @@ def get_round_winner(p1move, cmove):
         return("You lose!")
     elif p1move == 's' and cmove == 'r':
         return("You lose")
-    elif p1move == 'p' and cmove == 'p':
-        return("Tie")
-    elif p1move == 's' and cmove == 's':
-        return("Tie")
-    elif p1move == 'r' and cmove == 'r':
-        return("Tie")   
     else:
         return("Error")
     
-    return 1
+     
+    
 #function name: get_full_move
 #   arguments: a single letter move 'r','p', or 's'
 #   purpose: returns the "full" word of a given move
@@ -82,9 +77,9 @@ def get_full_move(shortmove):
 #   purpose: prints the scoreboard
 #   returns: none
 def print_score(pscore, cscore, ties):
-    pscore = 0
-    cscore = 0
-    ties = 0
+    print("Player has a score of {}".format(pscore))
+    print("Computer has a score of {}".format(cscore))
+    print(" You have tied {} many times".format(ties))
 
 #function name: rps
 #   arguments: none
@@ -92,32 +87,38 @@ def print_score(pscore, cscore, ties):
 #               all the other functions to create RPS
 #   returns: none
 def rps():
+    pscore = 0
+    cscore = 0
+    ties = 0
     rounds = get_rounds()
     for rounds in range(int(rounds)):
-        move = get_p1_move()
+        p1move = get_p1_move()
         randy = get_comp_move()
-        get_round_winner(p1move, randy)
-        winner = get_round_winner(p1move,comp_move)
-        print("player chose{}".format(p1_move))
-        print("Computer chose{}".format(get_full_move()))
-        if winner == "player":
+        print("player chose {}".format(p1move))
+        print("Computer chose {}".format(randy))
+        winner = get_round_winner(p1move,randy)
+        if winner == "You win!":
             print("Player won!")
-        elif winner == "comp":
+            pscore= pscore+1
+        elif winner == "You lose!":
             print("Computer won!")
+            cscore= cscore+1
         else:
+            ties = ties + 1
             print("It's a tie!")
+        print_score(pscore, cscore, ties)
 
 #function name: tests
 #   arguments: none
 #   purpose: a place for you to write your tests.  replace 'rps' below
 #               with 'tests' to run this function instead of the game loop
 #   returns: none
-def test():
-    return 1
-getrounds = (get_rounds())
-p1move = (get_p1_move()) 
-cmove = (get_comp_move())
-winner = (get_round_winner(p1move, cmove))
-print(winner)
+# def test():
+#     return 1
+# getrounds = (get_rounds())
+# p1move = (get_p1_move()) 
+# cmove = (get_comp_move())
+# winner = (get_round_winner(p1move, cmove))
+# print(winner)
 
 rps()
