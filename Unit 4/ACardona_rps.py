@@ -5,7 +5,7 @@ import random
 #   purpose: present player with options, use input() to get player move
 #   returns: the player's move as either 'r', 'p', or 's'
 def get_p1_move():
-    move = input("r, p, s:")
+    move = input("r, p or s:")
     return move
      
 
@@ -45,7 +45,7 @@ def get_round_winner(p1move, cmove):
     print(p1move + " " + cmove)
     if p1move == cmove:
         return("It's a tie!")
-    if p1move == 's' and cmove == 'p':
+    elif p1move == 's' and cmove == 'p':
         return("You win!")
     elif p1move == 'p' and cmove == 'r':
         return("You win!")
