@@ -5,7 +5,7 @@ import random
 #   purpose: present player with options, use input() to get player move
 #   returns: the player's move as either 'r', 'p', or 's'
 def get_p1_move():
-    move = input("r, p or s:")
+    move = input("rock, paper or scissors:")
     return move
      
 
@@ -17,11 +17,11 @@ def get_p1_move():
 def get_comp_move():
     randy = random.randint(1,3)
     if randy == 1:
-        return ("r")
+        return ("rock")
     elif randy == 2:
-        return ("p")
+        return ("paper")
     elif randy == 3:
-        return ("s")
+        return ("scissors")
     return randy
     
 
@@ -30,7 +30,7 @@ def get_comp_move():
 #   purpose: allows the user to choose a number of rounds from 1 to 9.
 #   returns: the user-chosen number of rounds
 def get_rounds():
-    rounds = int(input("How many rounds?"))
+    rounds = int(input("How many rounds? Pick a number between 1-9:"))
     return rounds
 
 #function name: get_round_winner
@@ -45,17 +45,17 @@ def get_round_winner(p1move, cmove):
     print(p1move + " " + cmove)
     if p1move == cmove:
         return("It's a tie!")
-    elif p1move == 's' and cmove == 'p':
+    elif p1move == 'scissors' and cmove == 'paper':
         return("You win!")
-    elif p1move == 'p' and cmove == 'r':
+    elif p1move == 'paper' and cmove == 'rock':
         return("You win!")
-    elif p1move == 'r' and cmove == 's':
+    elif p1move == 'rock' and cmove == 'scissors':
         return("You win!")
-    elif p1move == 'r' and cmove == 'p':
+    elif p1move == 'rock' and cmove == 'paper':
         return("You lose!")
-    elif p1move == 'p' and cmove == 's':
+    elif p1move == 'paper' and cmove == 'scissors':
         return("You lose!")
-    elif p1move == 's' and cmove == 'r':
+    elif p1move == 'scissors' and cmove == 'rock':
         return("You lose")
     else:
         return("Error")
