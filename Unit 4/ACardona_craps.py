@@ -1,5 +1,9 @@
 import random
-def bet_money(bank_account):
+
+def bank_account():
+    bank_account == 100
+    
+def get_bet():
     bet = int(input("Enter a whole number for your bet:"))
     if bet < 0:
         return("This is an invalid amount. Your bet must be a positive integer!")
@@ -25,20 +29,23 @@ def first_roll_result():
 #if roll  is 2,3,12: return"lose"
 
     
-def first_roll(dice_sum):
+def first_roll(dice_sum,point_roll):
     if dice_sum == 7 or dice_sum == 11:
         return("You win!")
     if dice_sum == 2 or dice_sum == 3 or dice_sum == 12:
         return("You lose")
     else:
-        return dice_sum
+        dice_sum == point_roll
+        
+        
 
 def phase_three_bet(bank_account):
     p3_bet = input("Do you want to keep playing? Yes or No?")
     if p3_bet == "Yes":
-        return("You have {} in your bank account.".format(bet_money(bank_account)))
+        return("You have {} in your bank account.".format(get_bet))
     if p3_bet == "No":
-        return("")
+        return("Thank you for playing.")
+        bank_account = bank_account
         
 def phase_three(dice_sum, point_roll):
     point_roll = first_roll_result()
@@ -47,4 +54,9 @@ def phase_three(dice_sum, point_roll):
     if dice_sum == point_roll:
         return("You win!")
     
-    
+def phase_winner(point_roll, bank_account):
+    if dice_sum == point_roll or dice_sum == 7:
+        return bet
+         
+    # return twice the amount of betted money to the winner
+# if computer or dealer wins, give the money to the dealer
