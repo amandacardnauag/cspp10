@@ -49,7 +49,8 @@ def second_roll_result(dice_sum,point_roll):
 
 def point_round(roll,point_roll):
     while (roll != 7 and roll != point_roll):
-        print(get_bet(bank_account))
+        print(roll2dice)
+    return(second_roll_result(dice_sum,point_roll))                                                                                                                                                                                                                                                                                                                                                                                                                                                        ))
         
         
 def craps():
