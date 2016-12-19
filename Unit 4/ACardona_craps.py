@@ -39,18 +39,21 @@ def first_roll_result(dice_sum):
         return dice_sum
     
 def second_roll_result(dice_sum,point_roll):
-    if dice_sum == 7 or dice_sum == point_roll:
+    if dice_sum == point_roll:
         print("You won!")
-    elif dice_sum == 2 or dice_sum == 3 or dice_sum == 12:
+    elif dice_sum == 7:
         print("You lose!")
     else:
         print("TRY AGAIN")
-    return(second_roll_result)
+    while (roll2dice() != 7 and roll2dice() != point_roll):
+        print(roll2dice())
+    return(second_roll_result)                                     
+        
 
-def point_round(roll,point_roll):
+def point_round(roll,point_roll,dice_sum):
     while (roll != 7 and roll != point_roll):
-        print(roll2dice)
-    return(second_roll_result(dice_sum,point_roll))                                                                                                                                                                                                                                                                                                                                                                                                                                                        ))
+        print(roll2dice())
+    return(second_roll_result(dice_sum,point_roll))                                     
         
         
 def craps():
