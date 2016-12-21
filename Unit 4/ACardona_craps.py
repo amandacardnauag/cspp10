@@ -3,6 +3,7 @@ import random
     
 def get_bet(bank_account):
     while True:
+        print("You have ${} in your bank account".format(bank_account))
         bet = int(input("Enter a whole number for your bet: $"))
         if bet < 0:
             print("This is an invalid amount. Your bet must be a positive integer!")
@@ -41,10 +42,14 @@ def first_roll_result(dice_sum):
         return dice_sum
     
 def second_roll_result(dice_sum,point_roll):
+    if dice_sum != 7 or dice_sum != 11 or dice_sum != 2 or dice_sum != 3 or dice_sum != 12:
+        dice_sum = point_roll
     if dice_sum == point_roll:
-        print("You won!")
-    elif dice_sum == 7:
+        print("You win!")
+        return(craps())
+    elif dice_sum == 7 or dice_sum != point_roll:
         print("You lose!")
+        return(craps())
     else:
         while (dice_sum != 7 and dice_sum != point_roll):
             dice_sum = roll2dice()
@@ -58,14 +63,18 @@ def craps():
     get_bet(bank_account)
     dice = roll2dice
     first_result = first_roll_result(dice)
-    if first_result == "You won!":
-        print("You won!")
+    if first_result == "You win!":
+        print("You win!")
     elif first_result == "You lose!":
         print("You lose!")
     else:
         print("point roll")
-        dice = roll2dice()
+        diceroll = roll2dice()
         point_roll_result = second_roll_result(dice,first_result)
+        if point_roll_result == "You win!":
+            print("You win!")
+        elif point_roll_result == "You lose!":
+            print("You lose!")
     return(craps())
         
 craps()
