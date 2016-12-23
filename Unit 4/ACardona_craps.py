@@ -34,16 +34,18 @@ def roll2dice():
 def first_roll_result(dice_sum):
     if dice_sum == 7 or dice_sum == 11:
         print("You win!")
-        return(craps())
+        return "You win!"
     elif dice_sum == 2 or dice_sum == 3 or dice_sum == 12:
         print("You lose")
-        return(craps())
+        return "You lose!"
     else:
         return dice_sum
+        
+def point_roll_result(point_roll):
+    if dice_sum != 7 or dice_sum != 11:
+        dice_sum = point_roll
     
 def second_roll_result(dice_sum,point_roll):
-    if dice_sum != 7 or dice_sum != 11 or dice_sum != 2 or dice_sum != 3 or dice_sum != 12:
-        dice_sum = point_roll
     if dice_sum == point_roll:
         print("You win!")
         return(craps())
@@ -75,7 +77,17 @@ def craps():
             print("You win!")
         elif point_roll_result == "You lose!":
             print("You lose!")
-    return(craps())
+            
+        else:
+            print("point_roll")
+            diceroll = roll2dice()
+            point_roll_result = second_roll_result(dice,first_result)
+            print ("_________________________________")
+            while bank_account > 0:
+                if bank_account <= 0:
+                    return "You don't have enough in your bank account"
+                elif bank_account > 0:
+                    return craps()
         
 craps()
         
