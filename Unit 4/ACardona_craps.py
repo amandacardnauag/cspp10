@@ -74,7 +74,7 @@ def second_roll_result(dice_sum,point_roll):
 def craps():
     bank_account=100
     while  bank_account > 0:
-        bet = bet(bank_account,bet)
+        bet = bet(bank_account)
         bank_account= bank_account - bet
         dice = roll2dice()
         first_result = first_roll_result(dice)
@@ -107,7 +107,7 @@ def craps():
 print ("_________________________________")
            
         
-craps()
+
         
 #def phase_three(dice_sum, point_roll):
 #    point_roll = first_roll_result()
