@@ -1,26 +1,52 @@
 import random
 
-    
-def bet(bank_account, bet):
+def get_bet(bank_account):
     while True:
-        print("You have ${} in your bank account".format(bank_account))
-        bet = int(input("Enter a whole number for your bet: $"))
+        print("You have ${} in your bank account.".format(bank_account))
+        bet=int(input("How much would you like to bet?: $"))
         if bet < 0:
-            print("This is an invalid amount. Your bet must be a positive integer!")
-        elif bet > 100:
-            print("This is over your available amount.")
+            print("Your bet must be a positive integer higher than $0")
+        elif bet> bank_account:
+            print("You only have ${} to bet, you can't bet anymore!".format(bank_account))
         else:
             return bet
-    
-    
+
 def roll2dice():
     dice1 = random.randint(1,6)
     dice2 = random.randint(1,6)
     dice_sum = dice1 + dice2
-    print("Rolled 2 dice: {} {}".format(dice1,dice2))
-    print("Total: {}".format(dice1 + dice2))
+    print("Rolled 2 dice: {} + {}".format(dice1,dice2))
+    print("Dice roll total: {}".format(dice1+dice2))
     return dice_sum
- 
+    
+    
+
+
+def first_roll_result(dice_sum):
+    if dice_sum == 7 or dice_sum == 11:
+        return "You won!"
+    elif dice_sum == 2 or dice_sum == 3 or dice_sum == 12:
+        return "You lose!"
+        
+    else:
+        return dice_sum
+
+        
+def second_roll_result(dice_sum,point_roll):
+    if dice_sum == 7:
+        return("You lose!")
+        
+    elif dice_sum == point_roll:
+        return("You won!")
+        
+    else:
+        while(dice_sum != 7 and dice_sum != point_roll):
+            dice_sum=roll2dice()
+            if dice_sum == 7:
+                return "You lose!"
+            elif dice_sum == point_roll:
+                return "You won!"
+                 
 
 #option 1
 #functio: first_roll_result
@@ -30,82 +56,46 @@ def roll2dice():
 #if roll is 7,11: return win
 #if roll  is 2,3,12: return"lose"
 
-    
-def first_roll_result(dice_sum):
-    if dice_sum == 7 or dice_sum == 11:
-        print("You win!")
-        return("You win!")
-    if dice_sum == 2 or dice_sum == 3 or dice_sum == 12:
-        print("You lose")
-        return("You lose!")       
-    else:
-        return dice_sum
+ 
       
  # lines 34-42 is made to determine whether the number is a losing number or a winning number which is point roll.
  # point roll is the number that was rolled in the first round but it can't equal 7. Point roll is any winning number for the next round.
  
-def point_roll_result(point_roll, dice_sum):
-    if dice_sum == 7:
-        return("You lose!")
-    elif dice_sum != 7:
-        return("You win!")
-    
-    
-    
-def second_roll_result(dice_sum,point_roll):
-    if dice_sum == 7:
-        print("You lose")
-    if dice_sum == point_roll:
-        print("You win")
-    else:
-        while (dice_sum != 7 and dice_sum != point_roll):
-            dice_sum = roll2dice()
-            if dice_sum == 7:
-                print("You lose!")
-                return "You lose!"
-            elif dice_sum == point_roll:
-                print("You won!")
-                return "You won"
-   
         
 
 
         
+
 def craps():
     bank_account=100
     while  bank_account > 0:
-        bet = bet(bank_account)
-        bank_account= bank_account - bet
+        bet = get_bet(bank_account)
         dice = roll2dice()
         first_result = first_roll_result(dice)
-        
-    if first_result == "You win!":
-        print("You won!")
-        bank_account= bank_account+bet*2
-        print ("You have ${} in your bank account".format(bank_account))
-        #what should happen to the bank account when they win?
-            
-    elif first_result == "You lose!":
-        print ("You lose!")
-           
-        print ("You have ${} in your bank account".format(bank_account))
-        #what should happen to the bank account when they lose?
-            
-    else:
-        print("point roll")
-        dice = roll2dice()
-        point_roll_result = second_roll_result(dice,first_result)
-        if point_roll_result == "You lose!":
-            print("You lose!")
-                
-            print ("You have ${} in your bank account".format(bank_account))
-        if point_roll_result == "You win!":
+        if first_result == "You won!":
             print("You won!")
-            bank_account= bank_account+bet*2
-            print("dgkjhs")
-            print("You have ${} in your bank account".format(bank_account))
-print ("_________________________________")
-           
+            bank_account = bank_account+bet
+        elif first_result == "You lose!":
+            print ("You lose!")
+            bank_account = bank_account-bet
+        else:
+            print("point roll")
+            dice = roll2dice()
+            point_roll_result = second_roll_result(dice,first_result)
+            if point_roll_result == "You lose!":
+                print("You lose!")
+                bank_account= bank_account-bet
+            if point_roll_result == "You won!":
+                print("You won!")
+                bank_account= bank_account+bet
+            
+            
+        print("____________________________________")
+    
+         
+        
+        
+craps()
         
 
         
