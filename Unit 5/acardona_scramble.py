@@ -7,8 +7,17 @@ print (word)
 #scramble users input
 #print users input
 def scramble_word(word):
-    list(word)
-    same_letter == [0:-1]
+    if len(word) >= 4:
+        split = list(word)
+        first = split[0]
+        last = split[-1]
+        firstlast_l = split[0:-1]
+        random.shuffle(firstlast_l)
+        firstlast_l.append(0, first)
+        firstlast_l.append(last)
+        final = ''.join(firstlast_l)
+        print(final)
+scramble_word(word)
+        
     
     
-def scramble_phrase():
